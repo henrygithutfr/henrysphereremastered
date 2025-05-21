@@ -1,0 +1,180 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>
+                <%- homepageData.heroTitle %>
+            </h1>
+            <p>
+                <%- homepageData.heroDescription %>
+            </p>
+            <div class="hero-btns">
+                <a href="/portfolio" class="btn">View Work</a>
+                <a href="/contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+        <!-- Changed to HTML img element instead of CSS background -->
+        <img src="<%= homepageData.heroImage %>" alt="<%= homepageData.heroImage %>" class="hero-image">
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="section" id="content">
+    <div class="container">
+        <div class="section-title">
+            <h2>My Content</h2>
+            <p>All of my difference kind of content across social media</p>
+        </div>
+        <div class="content-grid">
+            <% contents.forEach(content=> { %>
+                <a href="https://www.youtube.com/@<%= content.titleLow %>" class="content-card">
+                    <div class="card-image" style="background-image: url('<%= content.banner %>');">
+                    </div>
+                    <div class="card-content">
+                        <h3>
+                            <%= content.title %>
+                        </h3>
+                        <p>
+                            <%= content.description %>
+                        </p>
+                    </div>
+                </a>
+                <% }) %>
+        </div>
+        <div class="view-more">
+            <a href="/content" class="btn btn-outline" style="margin-top: 2rem;">View More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Blogs Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Latest Articles</h2>
+            <p>Insights and perspectives on design, technology, business and other stuff</p>
+        </div>
+        <div class="blogs-grid">
+            <% posts.forEach(post=> { %>
+                <div class="blog-card">
+                    <div class="blog-image" style="background-image: url('<%= post.thumbnail %>');">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date" style="font-size: 0.9rem;">
+                            <%= post.date %>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;"><%- post.title %></h3>
+                        <p><%- post.description %></p>
+                        <a href="/blogs/<%= post.slug %>" class="btn btn-outline"
+                            style="margin-top: 15px; padding: 10px 20px;">Read More</a>
+                    </div>
+                </div>
+                <% }) %>
+
+        </div>
+        <div class="view-more">
+            <a href="/blogs" class="btn btn-outline" style="margin-top: 2rem;">View More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section" id="portfolio">
+    <div class="container">
+        <div class="section-title">
+            <h2>Portfolio</h2>
+            <p>A showcase of my projects and collections</p>
+        </div>
+        <div class="portfolio-grid">
+            <% projects.forEach(project=> { %>
+                <a href="/portfolio/<%= project.slug %>" class="portfolio-item" data-category="<%= project.category %>">
+                    <img src="<%= project.thumbnail %>" alt="<%= project.title %>" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>
+                            <%= project.title %>
+                        </h3>
+                        <p>
+                            <%= project.description %>
+                        </p>
+                    </div>
+                </a>
+                <% }) %>
+        </div>
+        <div class="view-more">
+            <a href="/portfolio" class="btn btn-outline" style="margin-top: 2rem;">View More</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Our philosophy and approach to design</p>
+        </div>
+        <div class="about-container">
+            <% aboutContents.forEach(aboutContent=> { %>
+                <div class="about-image" style="background: url('<%= aboutContent.image %>') no-repeat center center;">
+                </div>
+                <div class="about-content">
+                    <h3><%- aboutContent.title %></h3>
+                    <%- aboutContent.bio %>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or want to discuss potential collaboration?</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-info-title">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to us through any of these channels</p>
+                </div>
+                <% contacts.forEach(contactEach=> { %>
+                    <a href="<%= contactEach.smUrl %>" class="contact-item">
+                        <div class="contact-icon"><i class="<%- contactEach.icons %>"></i></div>
+                        <div>
+                            <h4>
+                                <%= contactEach.smTitle %>
+                            </h4>
+                            <p>
+                                @<%= contactEach.smp %>
+                            </p>
+                        </div>
+                    </a>
+                    <% }) %>
+            </div>
+            <div class="contact-form">
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        <input class="form-input" type="text" name="name" placeholder="Your Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-input" type="email" name="email" placeholder="Your Email" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button class="btn" type="submit">Send</button>
+
+                    <% if (typeof success !=='undefined' ) { %>
+                        <% if (success) { %>
+                            <p class="success">Message sent successfully!</p>
+                            <% } else { %>
+                                <p class="error">Failed to send message. Try again.</p>
+                                <% } %>
+                                    <% } %>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

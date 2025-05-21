@@ -1,0 +1,86 @@
+<section class="section" id="blogs">
+  <div class="container">
+    <div class="blogs-grid">
+      <div class="blog-card-single">
+        <div class="blog-image" style="background-image: url('<%= post.thumbnail %>'); height: 500px; border-radius: 30px 30px 0px 0px;">
+        </div>
+        <div class="blog-date" style="display: flex; justify-content: space-between; align-items: center; padding: 25px; background-color: #1b1a1a;">
+          <a href="<%= post.author_credits %>"
+            style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; width: min-content;">
+            <img style="border-radius: 50%; max-width: 3rem; margin-right: 0.7rem;" src="<%= post.profile_picture %>" alt="Author" class="author-img" />
+            <span class="author-name" style="font-size: 1.2rem; font-weight: 500;">
+              <%= post.author %>
+            </span>
+          </a>
+          <%= post.date %>
+        </div>
+        <div class="blog-content">
+          <h3 style="width: 100%; margin-bottom: 1rem;">
+            <%= post.heading1 %>
+          </h3>
+          <p style="max-width: 100%;">
+            <%- post.content %>
+          </p>
+          <% if (post.image_url1) { %>
+            <div class="blog-image" style="background-image: url('<%= post.image_url1 %>'); margin-top: 2rem; height: 600px;">
+            </div>
+            <% } %>
+              <a href="<%= post.link1 %>" class="btn-single btn-outline-single" style="margin-top: 15px; padding: 10px 0px;"><%= post.link1 %></a>
+        </div>
+        <div class="blog-content">
+          <h3 style="width: 100%; margin-bottom: 1rem;">
+            <%= post.heading2 %>
+          </h3>
+          <p style="max-width: 100%;">
+            <%- post.content2 %>
+          </p>
+          <% if (post.image_url2) { %>
+            <div class="blog-image" style="background-image: url('<%= post.image_url2 %>'); margin-top: 2rem; height: 600px;">
+            </div>
+            <% } %>
+              <a href="<%= post.link2 %>" class="btn-single btn-outline-single" style="margin-top: 15px; padding: 10px 0px;"><%= post.link1 %></a>
+        </div>
+        <div class="blog-content">
+          <h3 style="width: 100%; margin-bottom: 1rem;">
+            <%= post.heading3 %>
+          </h3>
+          <p style="max-width: 100%;">
+            <%- post.content3 %>
+          </p>
+          <% if (post.image_url3) { %>
+            <div class="blog-image" style="background-image: url('<%= post.image_url3 %>'); margin-top: 2rem; height: 600px;">
+            </div>
+            <% } %>
+              <a href="<%= post.link3 %>" class="btn-single btn-outline-single" style="margin-top: 15px; padding: 10px 0px;"><%= post.link3 %></a>
+        </div>
+        <div class="blog-content">
+          <h3 style="width: 100%; margin-bottom: 1rem;">
+            <%= post.heading4 %>
+          </h3>
+          <p style="max-width: 100%;">
+            <%- post.content4 %>
+          </p>
+          <% if (post.image_url4) { %>
+            <div class="blog-image" style="background-image: url('<%= post.image_url4 %>'); margin-top: 2rem; height: 600px;">
+            </div>
+            <% } %>
+              <a href="<%= post.link4 %>" class="btn-single btn-outline-single" style="margin-top: 15px; padding: 10px 0px;"><%= post.link4 %></a>
+        </div>
+        <div class="blog-content">
+          <h3 style="width: 100%; margin-bottom: 1rem;">
+            <%= post.heading5 %>
+          </h3>
+          <p style="max-width: 100%;">
+            <%- post.content5 %>
+          </p>
+          <% if (post.image_url5) { %>
+            <div class="blog-image" style="background-image: url('<%= post.image_url5 %>'); margin-top: 2rem; height: 600px;">
+            </div>
+            <% } %>
+              <a href="<%= post.link5 %>" class="btn-single btn-outline-single" style="margin-top: 15px; padding: 10px 0px;"><%= post.link5 %></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<section class="section" id="content">
+    <div class="container">
+        <div class="section-title">
+            <h2>My Content</h2>
+            <p>All of my difference kind of content across social media</p>
+        </div>
+        <% allFeeds.forEach(feed=> { %>
+            <div class="content-grid-single">
+                <h2><img class="channel-img" src="<%= feed.channelPfp %>" alt=""><a href="https://www.youtube.com/channel/<%= feed.id %>" target="_blank">
+                    <%= feed.name %>
+                </a></h2>
+                <div class="content-container">
+                    <% feed.videos.forEach(video=> {
+                        let videoId = "";
+                        if (video.link.includes("v=")) {
+                        videoId = video.link.split("v=")[1]?.substring(0, 11);
+                        } else if (video.link.includes("/shorts/")) {
+                        videoId = video.link.split("/shorts/")[1]?.substring(0, 11);
+                        }
+                        %>
+                        <div class="content-card">
+                            <div class="video-card">
+                                <img class="card-image-single" src="https://img.youtube.com/vi/<%= videoId %>/hqdefault.jpg"
+                                    alt="<%= video.title %>" onerror="this.src='/images/placeholder.jpg';">
+                                <div class="card-content">
+                                    <h3>
+                                        <%= video.title %>
+                                    </h3>
+                                    <p class="date">
+                                        <%= new Date(video.pubDate).toLocaleDateString() %>
+                                    </p>
+                                    <a href="<%= video.link %>" target="_blank" class="btn btn-outline">▶ Watch</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+</section>
