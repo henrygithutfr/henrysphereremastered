@@ -15,7 +15,6 @@ const contactRoute = require('./routes/contact');
 const ppRoute = require('./routes/pp');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('layout', './layouts/main')
@@ -38,6 +37,7 @@ app.use(helmet());
 app.disable('x-powered-by');
 
 // Start server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
