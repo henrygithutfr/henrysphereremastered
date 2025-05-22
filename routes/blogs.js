@@ -47,6 +47,9 @@ router.get('/', async (req, res) => {
             const headingArray4 = page.properties?.['heading4']?.rich_text || [];
             const headingArray5 = page.properties?.['heading5']?.rich_text || [];
 
+            const blogTitleArray = page.properties?.['blog-title']?.rich_text || [];
+            const blogDescriptionArray = page.properties?.['blog-description']?.rich_text || [];
+
             return {
                 title: titleArray.length > 0 ? titleArray[0].plain_text : 'Untitled',
                 slug: slugArray.length > 0 ? slugArray[0].plain_text : 'no-slug',
@@ -80,12 +83,28 @@ router.get('/', async (req, res) => {
                 heading3: headingArray3.length > 0 ? headingArray3[0].plain_text : '',
                 heading4: headingArray4.length > 0 ? headingArray4[0].plain_text : '',
                 heading5: headingArray5.length > 0 ? headingArray5[0].plain_text : '',
+
+                blogTitle: blogTitleArray.length > 0 ? blogTitleArray[0].plain_text : 'Title',
+                blogDescription: blogDescriptionArray.length > 0 ? blogDescriptionArray[0].plain_text : 'Description',
             };
         });
 
+        const page = response.results[0];
+        if (!page) return res.status(404).send('No data found in Notion database');
+        const data = page.properties;
+
+        const blogPageData = {
+            blogTitle: data['blog-title']?.rich_text?.[0]?.plain_text || 'Untitled',
+            blogDescription: data['blog-description']?.rich_text?.[0]?.plain_text || 'Description',
+            blogKeywords: data['blog-keywords']?.rich_text?.[0]?.plain_text || 'Keywords',
+            blogAuthor: data['blog-author']?.rich_text?.[0]?.plain_text || 'Henry',
+        };
+
         const locals = {
-            title: "Henry Blog",
-            description: "This is a simple Henry Blog page"
+            title: blogPageData.blogTitle,
+            description: blogPageData.blogDescription,
+            keywords: blogPageData.blogKeywords,
+            author: blogPageData.blogAuthor,
         }
 
         res.render('blogs', { posts, locals });
@@ -144,9 +163,29 @@ router.get('/:slug', async (req, res) => {
             heading3: post.properties?.['heading3']?.rich_text[0]?.plain_text || '',
             heading4: post.properties?.['heading4']?.rich_text[0]?.plain_text || '',
             heading5: post.properties?.['heading5']?.rich_text[0]?.plain_text || '',
+
+            singleBlogDescription: post.properties['single-blog-description']?.rich_text[0]?.plain_text || 'Description',
+            singleBlogKeywords: post.properties['single-blog-keywords']?.rich_text[0]?.plain_text || 'Keywords',
+            singleBlogAuthor: post.properties['single-blog-author']?.rich_text[0]?.plain_text || 'Henry',
+
         };
 
-        res.render('single-blog', { post: fullPost });
+        const data = page.properties;
+        const singleBlogPageData = {
+            blogTitle: data['blog-title']?.rich_text?.[0]?.plain_text || 'Untitled',
+            singleBlogDescription: data['single-blog-description']?.rich_text?.[0]?.plain_text || 'Description',
+            singleBlogKeywords: data['single-blog-keywords']?.rich_text?.[0]?.plain_text || 'Keywords',
+            singleBlogAuthor: data['single-blog-author']?.rich_text?.[0]?.plain_text || 'Henry',
+        };
+
+        
+        const locals = {
+            title: fullPost.title,
+            description: singleBlogPageData.singleBlogDescription,
+            keywords: singleBlogPageData.singleBlogKeywords,
+            author: singleBlogPageData.singleBlogAuthor,
+        }
+        res.render('single-blog', { post: fullPost, locals });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error loading post');

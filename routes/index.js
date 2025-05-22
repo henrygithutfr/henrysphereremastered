@@ -180,10 +180,27 @@ router.get('/blogs/:slug', async (req, res) => {
             heading2: convertToHtml(props.heading2?.rich_text?.[0]?.plain_text || ''),
             heading3: convertToHtml(props.heading3?.rich_text?.[0]?.plain_text || ''),
             heading4: convertToHtml(props.heading4?.rich_text?.[0]?.plain_text || ''),
-            heading5: convertToHtml(props.heading5?.rich_text?.[0]?.plain_text || '')
+            heading5: convertToHtml(props.heading5?.rich_text?.[0]?.plain_text || ''),
+
+            singleBlogDescription: post.properties['single-blog-description']?.rich_text[0]?.plain_text || 'Description',
+            singleBlogKeywords: post.properties['single-blog-keywords']?.rich_text[0]?.plain_text || 'Keywords',
+            singleBlogAuthor: post.properties['single-blog-author']?.rich_text[0]?.plain_text || 'Henry',
         };
 
-        res.render('single-blog', { post: fullPost, homepageData });
+        const data = post.properties;
+        const singleBlogPageData = {
+            blogTitle: data['blog-title']?.rich_text?.[0]?.plain_text || 'Untitled',
+            singleBlogDescription: data['single-blog-description']?.rich_text?.[0]?.plain_text || 'Description',
+            singleBlogKeywords: data['single-blog-keywords']?.rich_text?.[0]?.plain_text || 'Keywords',
+            singleBlogAuthor: data['single-blog-author']?.rich_text?.[0]?.plain_text || 'Henry',
+        };
+        const locals = {
+            title: fullPost.title,
+            description: singleBlogPageData.singleBlogDescription,
+            keywords: singleBlogPageData.singleBlogKeywords,
+            author: singleBlogPageData.singleBlogAuthor,
+        }
+        res.render('single-blog', { post: fullPost, homepageData, locals });
 
     } catch (error) {
         console.error(error);
@@ -220,7 +237,7 @@ router.post('/', async (req, res) => {
         console.error('❌ Failed to send email:', error);
         res.status(500).render('contact-success', { success: false });
     }
-    
+
 });
 
 module.exports = router;

@@ -11,17 +11,28 @@ router.get('/', async (req, res) => {
             database_id: contactDb,
         });
 
-        const locals = {
-            title: "Contact",
-            description: "This is a contact page"
-        }
-
         const contacts = responseContact.results.map(page => ({
             smTitle: page.properties.Title?.title?.[0]?.plain_text || 'Unnamed Channel',
             smp: page.properties.smp?.rich_text?.[0]?.plain_text || '',
             icons: page.properties.icons?.url || '',
             smUrl: page.properties.smurl?.url || '',
         }));
+
+        const page = responseContact.results[0];
+        const data = page.properties;
+        const contactPageData = {
+            aboutTitle: data['page-title']?.rich_text?.[0]?.plain_text || 'Untitled',
+            aboutDescription: data['page-description']?.rich_text?.[0]?.plain_text || 'Description',
+            aboutKeywords: data['page-keywords']?.rich_text?.[0]?.plain_text || 'Keywords',
+            aboutAuthor: data['page-author']?.rich_text?.[0]?.plain_text || 'Henry',
+        };
+
+        const locals = {
+            title: contactPageData.aboutTitle,
+            description: contactPageData.aboutDescription,
+            keywords: contactPageData.aboutKeywords,
+            author: contactPageData.aboutAuthor,
+        }
 
         res.render('contact', { contacts, locals });
 
