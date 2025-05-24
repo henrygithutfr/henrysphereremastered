@@ -2,6 +2,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const helmet = require('helmet');
+const compression = require('compression');
 const { Client } = require('@notionhq/client');
 require('dotenv').config();
 
@@ -33,6 +34,7 @@ app.use('/content', contentRoute);
 app.use('/contact', contactRoute);
 app.use('/privacy-policy', ppRoute);
 
+app.use(compression());
 app.use(helmet());
 app.disable('x-powered-by');
 
