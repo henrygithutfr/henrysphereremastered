@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://henrysphere.onrender.com/sitemap.xml

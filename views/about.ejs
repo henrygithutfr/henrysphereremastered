@@ -1,0 +1,36 @@
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Our philosophy and approach to design</p>
+        </div>
+        <div class="about-container">
+            <% aboutContents.forEach(aboutContent=> { %>
+                <div class="about-image" style="background: url('<%= aboutContent.image %>') no-repeat center center;">
+                </div>
+                <div class="about-content">
+                    <h3><%- aboutContent.title %></h3>
+                    <%- aboutContent.bio %>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <div class="about-container">
+        <canvas class="particles" id="particles"></canvas>
+
+        <div class="content-grid">
+            <div class="profile-card">
+                <% aboutContents.forEach(aboutContent=> { %>
+                <img src="<%- aboutContent.pfp %>" alt="Profile" class="profile-image">
+                    <%- aboutContent.sec1 %>
+                    <% }) %>
+            </div>
+
+            <div class="stats-card">
+                <% aboutContents.forEach(aboutContent=> { %>
+                    <%- aboutContent.sec2 %>
+                        <% }) %>
+            </div>
+        </div>
+    </div>
+</section>

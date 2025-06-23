@@ -1,0 +1,51 @@
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or want to discuss potential collaboration?</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-info-title">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to us through any of these channels</p>
+                </div>
+                <% contacts.forEach(contactEach=> { %>
+                    <a href="<%= contactEach.smUrl %>" class="contact-item">
+                        <div class="contact-icon"><i class="<%- contactEach.icons %>"></i></div>
+                        <div>
+                            <h4>
+                                <%= contactEach.smTitle %>
+                            </h4>
+                            <p>
+                                @<%= contactEach.smp %>
+                            </p>
+                        </div>
+                    </a>
+                    <% }) %>
+            </div>
+            <div class="contact-form">
+                <form action="/contact" method="POST">
+                    <div class="form-group">
+                        <input class="form-input" type="text" name="name" placeholder="Your Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-input" type="email" name="email" placeholder="Your Email" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button class="btn" type="submit">Send</button>
+
+                    <% if (typeof success !=='undefined' ) { %>
+                        <% if (success) { %>
+                            <p class="success">Message sent successfully!</p>
+                            <% } else { %>
+                                <p class="error">Failed to send message. Try again.</p>
+                                <% } %>
+                                    <% } %>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

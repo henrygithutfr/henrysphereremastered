@@ -1,0 +1,31 @@
+{
+  "name": "notion-express-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "devStart": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@notionhq/client": "^3.0.0",
+    "@sendgrid/mail": "^8.1.5",
+    "compression": "^1.8.0",
+    "dns": "^0.2.2",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "nodemailer": "^7.0.3",
+    "nodemon": "^3.1.10",
+    "rss-parser": "^3.13.0"
+  },
+  "engines": {
+    "node": "20.14.0"
+  }
+}
