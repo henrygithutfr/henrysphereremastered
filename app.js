@@ -35,15 +35,16 @@ app.use('/content', contentRoute);
 app.use('/contact', contactRoute);
 app.use('/privacy-policy', ppRoute);
 
-app.get('/sitemap.xml', function(req, res) {
-  res.set('Content-Type', 'application/xml');
+app.get('/sitemap.xml', function (req, res) {
+  res.setHeader('Content-Type', 'application/xml');
+  res.setHeader('X-Robots-Tag', 'all'); // <-- This is important for Googlebot
   res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
 });
 
 app.use(compression());
 app.use(helmet());
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Origin', '*');
   next();
 });
 app.disable('x-powered-by');
