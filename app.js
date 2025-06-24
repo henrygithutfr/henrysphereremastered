@@ -34,6 +34,11 @@ app.use('/content', contentRoute);
 app.use('/contact', contactRoute);
 app.use('/privacy-policy', ppRoute);
 
+app.get('/sitemap.xml', function(req, res) {
+  res.header('Content-Type', 'application/xml');
+  res.sendFile(__dirname + '/public/sitemap.xml');
+});
+
 app.use(compression());
 app.use(helmet());
 app.disable('x-powered-by');
