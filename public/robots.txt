@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Allow: /sitemap
 
-Sitemap: https://henrysphere.onrender.com/sitemap_index.xml
+Sitemap: https://henrysphere.onrender.com/sitemap.xml
