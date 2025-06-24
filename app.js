@@ -35,8 +35,6 @@ app.use('/content', contentRoute);
 app.use('/contact', contactRoute);
 app.use('/privacy-policy', ppRoute);
 
-const path = require('path');
-
 app.get('/sitemap.xml', function(req, res) {
   res.set('Content-Type', 'application/xml');
   res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
