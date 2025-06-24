@@ -2,6 +2,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const helmet = require('helmet');
+const path = require('path');
 const compression = require('compression');
 const { Client } = require('@notionhq/client');
 require('dotenv').config();
@@ -34,13 +35,19 @@ app.use('/content', contentRoute);
 app.use('/contact', contactRoute);
 app.use('/privacy-policy', ppRoute);
 
+const path = require('path');
+
 app.get('/sitemap.xml', function(req, res) {
-  res.header('Content-Type', 'application/xml');
-  res.sendFile(__dirname + '/public/sitemap.xml');
+  res.set('Content-Type', 'application/xml');
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
 });
 
 app.use(compression());
 app.use(helmet());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.disable('x-powered-by');
 
 // Start server
