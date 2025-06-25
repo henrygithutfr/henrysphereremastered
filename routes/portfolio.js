@@ -28,32 +28,37 @@ router.get('/', async (req, res) => {
       filter3: page.properties?.['filter3']?.rich_text?.[0]?.plain_text || '',
       filter4: page.properties?.['filter4']?.rich_text?.[0]?.plain_text || '',
       filter5: page.properties?.['filter5']?.rich_text?.[0]?.plain_text || '',
+
+      portfolioTitle: page.properties?.['page-title']?.rich_text?.[0]?.plain_text || '',
+      portfolioDescription: page.properties?.['page-description']?.rich_text?.[0]?.plain_text || '',
+      portfolioKeywords: page.properties?.['page-keywords']?.rich_text?.[0]?.plain_text || '',
+      portfolioAuthor: page.properties?.['page-author']?.rich_text?.[0]?.plain_text || '',
     }));
 
+    let metaData = null;
 
-    const portfolioResponse = await notion.databases.query({
-      database_id: portfolioDb,
-      filter: {
-        property: 'Published',
-        checkbox: { equals: true },
-      },
-    });
+    for (const page of response.results) {
+      const props = page.properties;
 
-    const page = portfolioResponse.results[0];
-    const data = page.properties;
-    const portfolioPageData = {
-      portfolioTitle: data?.['page-title']?.rich_text?.[0]?.plain_text || 'My Portfolio | HenrySphere',
-      portfolioDescription: data?.['page-description']?.rich_text?.[0]?.plain_text || 'Browse my portfolio showcasing web development projects, content creation, graphic designs, and other creative work. Discover what I’ve built and collaborated on as a developer and content creator.',
-      portfolioKeywords: data?.['page-keywords']?.rich_text?.[0]?.plain_text || 'portfolio, web development, projects, designs, content creation, HenrySphere, developer portfolio, graphic design, coding projects, creative work, full-stack developer',
-      portfolioAuthor: data?.['page-author']?.rich_text?.[0]?.plain_text || 'Henry',
-    };
+      // Heuristically decide which is metadata page (you can change this logic)
+      if (
+        props['page-title'] ||
+        props['page-description'] ||
+        props['page-keywords']
+      ) {
+        metaData = props;
+        continue;
+      }
+    }
 
     const locals = {
-      title: portfolioPageData.portfolioTitle,
-      description: portfolioPageData.portfolioDescription,
-      keywords: portfolioPageData.portfolioKeywords,
-      author: portfolioPageData.portfolioAuthor,
-    }
+      title: metaData?.['page-title']?.rich_text?.[0]?.plain_text || 'My Portfolio | HenrySphere',
+      description: metaData?.['page-description']?.rich_text?.[0]?.plain_text || '',
+      keywords: metaData?.['page-keywords']?.rich_text?.[0]?.plain_text || '',
+      author: metaData?.['page-author']?.rich_text?.[0]?.plain_text || 'Henry',
+    };
+
+    console.log(locals)
 
     res.render('portfolio', { projects, locals });
   } catch (err) {

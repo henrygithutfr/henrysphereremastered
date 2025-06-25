@@ -42,6 +42,8 @@ router.get('/', async (req, res) => {
         const homepageData = {
             title: data.Title?.title?.[0]?.plain_text || 'Untitled',
             description: data.description?.rich_text?.[0]?.plain_text || '',
+            author: data.author?.rich_text?.[0]?.plain_text || '',
+            keywords: data.keywords?.rich_text?.[0]?.plain_text || '',
             heroTitle: data['Hero-Title']?.rich_text?.[0]?.plain_text || '',
             heroDescription: data['Hero-Description']?.rich_text?.[0]?.plain_text || '',
             heroImage: data['Hero-Image']?.url || ''
@@ -49,7 +51,9 @@ router.get('/', async (req, res) => {
 
         const locals = {
             title: homepageData.title,
-            description: homepageData.description
+            description: homepageData.description,
+            keywords: homepageData.keywords,
+            author: homepageData.author,
         };
 
         const blogRes = await notion.databases.query({
