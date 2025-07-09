@@ -26,6 +26,11 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://henrysphereremastered.onrender.com/blogs/first-post</loc>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Add more pages as needed -->
 
 </urlset>
