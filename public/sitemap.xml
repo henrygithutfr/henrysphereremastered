@@ -26,6 +26,23 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://henrysphere.onrender.com/blogs/first-post</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://henrysphere.onrender.com/blogs/second-post</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://henrysphere.onrender.com/blogs/third-post</loc>
+    <priority>0.6</priority>
+  </url>
+
+
+
   <!-- Add more pages as needed -->
 
 </urlset>
