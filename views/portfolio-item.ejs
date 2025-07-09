@@ -1,0 +1,117 @@
+<section class="section" id="portfolio">
+    <div class="container">
+        <div class="section-title">
+            <h2>
+                <%= project.miniTitle %>
+            </h2>
+            <p>
+                <%= project.description %>
+            </p>
+        </div>
+        <div class="title_container">
+            <div class="section_title_top">
+                <a class="btn btn-outline" href="/portfolio"> <i class="ri-arrow-left-line"></i> Go Back</a>
+            </div>
+            <div class="section_title_bottom">
+                <a class="btn btn-outline" href="<%= project.visitLink %>">View more <i class="ri-external-link-line"></i></a>
+            </div>
+        </div>
+        <div class="portfolio-grid">
+            <a href="/portfolio/<%= project.miniLink1 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail1 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content1 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink2 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail2 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content2 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink3 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail3 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content3 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink4 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail4 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content4 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink5 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail5 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content5 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink6 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail6 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content6 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink7 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail7 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content7 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink8 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail8 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content8 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink9 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail9 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content9 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink10 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail10 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content10 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink11 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail11 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content11 %>
+                </div>
+            </a>
+
+            <a href="/portfolio/<%= project.miniLink12 %>" class="portfolio-item"
+                data-category="<%= project.category %>">
+                <img src="<%= project.miniThumbnail12 %>" alt="<%= project.title %>" class="portfolio-image">
+                <div class="portfolio-overlay">
+                    <%- project.content12 %>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>

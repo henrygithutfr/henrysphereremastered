@@ -9,6 +9,12 @@ router.get('/', async (req, res) => {
     try {
         const responseContact = await notion.databases.query({
             database_id: contactDb,
+            sorts: [
+                {
+                    property: 'Date',
+                    direction: 'ascending',
+                },
+            ],
         });
 
         const contacts = responseContact.results.map(page => ({
@@ -26,6 +32,8 @@ router.get('/', async (req, res) => {
             aboutKeywords: data['page-keywords']?.rich_text?.[0]?.plain_text || 'Keywords',
             aboutAuthor: data['page-author']?.rich_text?.[0]?.plain_text || 'Henry',
         };
+
+        console.log(contactPageData)
 
         const locals = {
             title: contactPageData.aboutTitle,

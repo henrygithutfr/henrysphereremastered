@@ -37,7 +37,7 @@ app.use('/privacy-policy', ppRoute);
 
 app.get('/sitemap.xml', function (req, res) {
   res.setHeader('Content-Type', 'application/xml');
-  res.setHeader('X-Robots-Tag', 'all'); // <-- This is important for Googlebot
+  res.setHeader('X-Robots-Tag', 'all');
   res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
 });
 

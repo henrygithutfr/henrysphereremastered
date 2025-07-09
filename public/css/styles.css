@@ -101,7 +101,7 @@ nav a:hover::after {
     max-width: 800px;
 }
 
-.hero h3{
+.hero h3 {
     animation: fadeInUp 0.5s ease;
 }
 
@@ -148,7 +148,7 @@ nav a:hover::after {
     margin: 6rem 0;
 }
 
-.content-grid-single h2{
+.content-grid-single h2 {
     font-size: 2rem;
     text-decoration: underline;
     font-style: italic;
@@ -157,7 +157,7 @@ nav a:hover::after {
     align-items: center;
 }
 
-.content-grid-single .channel-img{
+.content-grid-single .channel-img {
     max-width: 3rem;
     border-radius: 50%;
     margin-right: 1rem;
@@ -178,12 +178,12 @@ nav a:hover::after {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.content-grid-single h3{
+.content-grid-single h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.content-grid-single .date{
+.content-grid-single .date {
     margin: 1rem 0;
 }
 
@@ -197,8 +197,8 @@ nav a:hover::after {
     background-position: center;
 }
 
-.card-image-single{
-        height: max-content;
+.card-image-single {
+    height: max-content;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -206,6 +206,11 @@ nav a:hover::after {
 
 .card-content {
     padding: 30px;
+}
+
+.card-content h3 {
+    font-size: clamp(1.5rem, 3vw, 1.7rem);
+    margin-bottom: 0.3rem;
 }
 
 /* Blogs Section */
@@ -295,6 +300,29 @@ nav a:hover::after {
     transform: scale(1.1);
 }
 
+.title_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.title_container a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section_title_top i{
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.section_title_bottom i{
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+}
+
 /* About Section */
 .about-container {
     display: grid;
@@ -369,7 +397,7 @@ nav a:hover::after {
     gap: 15px;
 }
 
-.contact-item:hover{
+.contact-item:hover {
     text-decoration: underline;
 }
 
@@ -418,7 +446,7 @@ footer {
     margin-bottom: 30px;
 }
 
-footer p{
+footer p {
     max-width: 100%;
 }
 
@@ -451,23 +479,23 @@ footer p{
     font-size: 0.9rem;
 }
 
-#pp h2{
+#pp h2 {
     font-size: 2rem;
 }
 
-#pp h3{
+#pp h3 {
     font-size: 1.5rem;
 }
 
-#pp ul{
+#pp ul {
     margin-top: 1rem;
 }
 
-#pp p{
+#pp p {
     max-width: max-content;
 }
 
-#pp .container div{
+#pp .container div {
     margin-bottom: 2rem;
 }
 
@@ -483,6 +511,7 @@ footer p{
         border-radius: 0 0 100px 100px;
     }
 }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -564,7 +593,7 @@ footer p{
 }
 
 @media (max-width: 576px) {
-    .btn-single{
+    .btn-single {
         font-size: 0.7rem;
     }
 
